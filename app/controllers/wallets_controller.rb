@@ -1,10 +1,9 @@
 class WalletsController < ApplicationController
   def show
-    user = User.find(params[:user_id])
-    @wallet = user.wallet
-  end
-
-  def index
-    
+    if current_user
+      @wallet = current_user.wallet
+    else
+      redirect_to new_user_session_path
+    end
   end
 end

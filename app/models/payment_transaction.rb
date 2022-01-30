@@ -1,7 +1,7 @@
 class PaymentTransaction < ApplicationRecord
   belongs_to :wallet
   belongs_to :user
-  after_create :manage_balance
+  after_create :manage_balance, :manage_balance_after_transaction
 
 
   def manage_balance

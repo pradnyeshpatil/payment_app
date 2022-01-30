@@ -1,19 +1,26 @@
+ <%= link_to 'Generate Report', generate_report_path, target: '_blank' %>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Transaction Id</th>
+        <th scope="col">Message</th>
         <th scope="col">From</th>
         <th scope="col">To</th>
         <th scope="col">Amount</th>
+        <th scope="col">Status</th>
+        <th scope="col">Date</th>
       </tr>
     </thead>
     <tbody>
       <%@transactions.each do |transaction|%>
         <tr>
           <th scope="row"><%=transaction.id%></th>
+          <th scope="row"><%=transaction.message%></th>
           <td><%=transaction.user_id%></td>
           <td><%=transaction.to_whom%></td>
           <td><%=transaction.ammount%></td>
+          <td><%=transaction.user_id == current_user.id ? "Debited" : "Credited"%></td>
+          <td><%=(transaction.created_at).strftime('%d/%m/%Y %H:%M %p')%></td>
         </tr>
       <%end%>
     </tbody>

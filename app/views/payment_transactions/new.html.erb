@@ -20,22 +20,22 @@
 		border-color: #e1e1e1;
         border-radius: 0;
 	}
-	.signup-form {
+	.create-new-payment {
 		width: 390px;
 		margin: 0 auto;
 		padding: 30px 0;
 	}
-	.signup-form h2 {
+	.create-new-payment h2 {
 		color: #636363;
         margin: 0 0 15px;
 		text-align: center;
     }
-    .signup-form .lead {
+    .create-new-payment .lead {
         font-size: 14px;
 		margin-bottom: 30px;
 		text-align: center;
 	}
-    .signup-form form {		
+    .create-new-payment form {		
 		border-radius: 1px;
     	margin-bottom: 15px;
         background: #fff;
@@ -43,26 +43,26 @@
         box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
         padding: 30px;
     }
-	.signup-form .form-group {
+	.create-new-payment .form-group {
 		margin-bottom: 20px;
 	}
-	.signup-form label {
+	.create-new-payment label {
 		font-weight: normal;
 		font-size: 13px;
 	}
-	.signup-form .form-control {
+	.create-new-payment .form-control {
 		min-height: 38px;
 		box-shadow: none !important;
 		border-width: 0 0 1px 0;
 	}	
-	.signup-form .input-group-addon {
+	.create-new-payment .input-group-addon {
 		max-width: 42px;
 		text-align: center;
 		background: none;
 		border-width: 0 0 1px 0;
 		padding-left: 5px;
 	}
-    .signup-form .btn {        
+    .create-new-payment .btn {        
         font-size: 16px;
         font-weight: bold;
 		background: #19aa8d;
@@ -71,23 +71,23 @@
 		min-width: 140px;
         outline: none !important;
     }
-	.signup-form .btn:hover, .signup-form .btn:focus {
+	.create-new-payment .btn:hover, .create-new-payment .btn:focus {
 		background: #179b81;
 	}
-	.signup-form a {
+	.create-new-payment a {
 		color: #19aa8d;
 		text-decoration: none;
 	}	
-	.signup-form a:hover {
+	.create-new-payment a:hover {
 		text-decoration: underline;
 	}
-	.signup-form .fa {
+	.create-new-payment .fa {
 		font-size: 21px;
 	}
-	.signup-form .fa-paper-plane {
+	.create-new-payment .fa-paper-plane {
 		font-size: 17px;
 	}
-	.signup-form .fa-check {
+	.create-new-payment .fa-check {
 		color: #fff;
 		left: 9px;
 		top: 18px;
@@ -97,25 +97,28 @@
 </style>
 </head>
 <body>
-<div class="signup-form">	
+<div class="create-new-payment">	
 	<%= form_with(model: @payment_transaction, local: true) do |f| %>
     <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user"></i></span>
-				<%= f.number_field :ammount, class: 'form-control', placeholder:"Name", required:"required" %>
+				<%= f.number_field :ammount, class: 'form-control', placeholder:"Please add ammout", required:"required" %>
 			</div>
-        </div>
-        <div class="form-group">
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-user"></i></span>
+				<%= f.text_field :message, class: 'form-control', placeholder:"For What"%>
+			</div>
+		</div>
+		<div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-paper-plane"></i></span>
-				<%= f.select(:to_whom, User.all.collect{|user|  [user.id] })%>
+				<%= f.select(:to_whom, User.all.collect{|user|  [user.id] }) %>
 			</div>
     </div>    
-		<%= f.submit "Sign Up", class: "btn btn-primary btn-block btn-lg" %>
-    
-		<p class="small text-center">By clicking the Sign Up button, you agree to our <br><a href="#">Terms &amp; Conditions</a>, and <a href="#">Privacy Policy</a>.</p>
-    <% end %>
-	<div class="text-center">Already have an account? <a href="#">Login here</a>.</div>
+		<%= f.submit "Make Payment", class: "btn btn-primary btn-block btn-lg" %>
+	<% end %>
 </div>
 </body>
 </html>
