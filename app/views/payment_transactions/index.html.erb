@@ -1,0 +1,20 @@
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@transactions.each do |transaction|%>
+        <tr>
+          <th scope="row"><%=transaction.id%></th>
+          <td><%=transaction.user_id%></td>
+          <td><%=transaction.to_whom%></td>
+          <td><%=transaction.ammount%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
